@@ -1,0 +1,129 @@
+/* adaptable.css — los dos casos donde la página cambia: pantalla angosta
+   (la notebook del colegio) y papel. */
+
+/* Pantallas chicas */
+
+@media (max-width: 1100px) {
+  .grilla-2 {
+    grid-template-columns: 1fr;
+  }
+  .accesos {
+    grid-template-columns: 1fr;
+  }
+  .contenido {
+    padding: 30px;
+  }
+
+  /* De cuatro cajas por renglón a dos: en cuatro columnas los nombres
+       se cortaban. */
+  .grupos {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Lo mismo con los números del reporte. */
+  .cifras-mes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .login {
+    grid-template-columns: 1fr;
+  }
+  .login__presentacion {
+    display: none;
+  }
+  .formulario-grilla {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .contenido {
+    margin-left: 0;
+  }
+  .encabezado {
+    flex-direction: column;
+  }
+}
+
+/* Impresión
+   El reporte mensual se archiva en papel, y la navegación y los filtros no
+   se pueden usar ahí. */
+
+/* El encabezado formal del reporte: se ve sólo en papel. */
+.solo-impresion {
+  display: none;
+}
+
+@media print {
+  .cabecera,
+  .solapas,
+  .filtros,
+  .boton,
+  .no-imprimir {
+    display: none !important;
+  }
+
+  .solo-impresion {
+    display: block !important;
+  }
+
+  body {
+    background: #fff;
+    font-size: 10.5pt;
+    color: #000;
+  }
+
+  .contenido {
+    padding: 0;
+    max-width: none;
+  }
+
+  /* La hoja ya separa sola, y el fondo de color gasta tinta. */
+  .caja,
+  .grupo {
+    border: none;
+    margin-bottom: 15px;
+  }
+
+  .grupo__cab {
+    background: none;
+    border-bottom: 1.88px solid #000;
+  }
+
+  .caja__titulo {
+    background: none;
+    border-bottom: 1.88px solid #000;
+    padding-left: 0;
+  }
+
+  /* Sin esto el encabezado sale en blanco y no se distingue de los
+       datos. */
+  .tabla--densa thead th {
+    background-color: #e5e5e5 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .tabla--densa tbody tr:nth-child(even) {
+    background: none;
+  }
+
+  /* El total se imprime, pero sin fondo: alcanzan la línea y la negrita. */
+  .fila-total td {
+    background: none;
+    border-top: 1.88px solid #000;
+  }
+
+  /* Que una fila no quede partida entre dos hojas */
+  tr {
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+}

@@ -1,0 +1,255 @@
+/* navegacion.css — la barra de arriba, las solapas y el marco del
+   contenido. Es lo que se repite en las siete pantallas. */
+
+/* Barra lateral */
+
+.sidebar {
+    width: var(--ancho-sidebar);
+    background-color: var(--blanco);
+    border-right: 1px solid var(--borde);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 30px 20px;
+}
+
+.sidebar__logo {
+    display: flex;
+    align-items: center;
+    gap: 12.5px;
+    padding: 0 10px 30px 10px;
+}
+
+.sidebar__logo-texto h1 {
+    font-size: 27.5px;
+    font-weight: 700;
+    letter-spacing: -.5px;
+    line-height: 1.1;
+}
+
+.sidebar__logo-texto span {
+    font-size: 13.75px;
+    color: var(--texto-suave);
+}
+
+/* Ítems del menú */
+.sidebar__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
+}
+
+.sidebar__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 13.75px 15px;
+    border-radius: var(--radio-chico);
+    color: var(--texto-suave);
+    font-weight: 500;
+    transition: background-color .15s, color .15s;
+}
+
+.sidebar__item:hover {
+    background-color: var(--fondo);
+    color: var(--texto);
+}
+
+/* El ítem de la pantalla en la que estás parado */
+.sidebar__item--activo {
+    background-color: var(--azul);
+    color: var(--blanco);
+}
+
+.sidebar__item--activo:hover {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+}
+
+/* Tarjeta del usuario, abajo de todo */
+.sidebar__usuario {
+    border-top: 1px solid var(--borde);
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12.5px;
+}
+
+.sidebar__usuario-datos {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.sidebar__usuario-datos strong {
+    display: block;
+    font-size: 16.25px;
+}
+
+.sidebar__usuario-datos span {
+    display: block;
+    font-size: 13.75px;
+    color: var(--texto-suave);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar__salir {
+    color: var(--rojo);
+    padding: 10px;
+    border-radius: var(--radio-chico);
+    display: flex;
+    align-items: center;
+}
+
+.sidebar__salir:hover {
+    background-color: var(--rojo-claro);
+}
+
+
+/* Barra superior y solapas
+   Le gana al menú lateral porque deja todo el ancho libre para las
+   planillas, que es lo que más se mira. */
+
+.cabecera {
+    background-color: var(--azul);
+    color: var(--blanco);
+    height: var(--alto-cabecera);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    gap: 25px;
+}
+
+.cabecera__marca {
+    display: flex;
+    align-items: center;
+    gap: 12.5px;
+    min-width: 0;
+}
+
+/* El mismo SVG del login, en blanco para que se vea sobre el azul. */
+.cabecera__marca svg { flex-shrink: 0; }
+
+.cabecera__marca strong {
+    font-size: 22.5px;
+    font-weight: 700;
+    letter-spacing: .2px;
+}
+
+.cabecera__marca span {
+    font-size: 15px;
+    opacity: .8;
+}
+
+.cabecera__usuario {
+    display: flex;
+    align-items: center;
+    gap: 17.5px;
+    font-size: 16.25px;
+    white-space: nowrap;
+}
+
+.cabecera__usuario b { font-weight: 600; }
+.cabecera__usuario small { opacity: .8; }
+
+.cabecera__salir {
+    border: 1px solid rgba(255, 255, 255, .45);
+    padding: 6.25px 15px;
+    border-radius: var(--radio);
+}
+
+.cabecera__salir:hover { background-color: rgba(255, 255, 255, .12); }
+
+/* Solapas
+   Barra blanca con borde abajo, igual que las cajas del contenido. El azul
+   queda sólo para la solapa donde estás: es lo único que tiene que saltar. */
+
+.solapas {
+    background-color: var(--blanco);
+    border-bottom: 1px solid var(--borde-caja);
+    display: flex;
+    padding: 0 25px;
+    gap: 0;
+    /* Si no entran todas, que se corran de costado y no se corten. */
+    overflow-x: auto;
+}
+
+.solapas a {
+    color: var(--texto-suave);
+    padding: 14px 20px;
+    font-size: 16.88px;
+    font-weight: 500;
+    white-space: nowrap;
+    /* Transparente para reservar el lugar: si no, al pasar el mouse
+       aparece la línea y el texto salta. */
+    border-bottom: 3px solid transparent;
+}
+
+.solapas a:hover {
+    color: var(--texto);
+    border-bottom-color: var(--borde-caja);
+}
+
+/* Tres marcas a la vez (color, negrita y línea) para que se distinga
+   aunque alguien no vea bien los colores. */
+.solapas a.activa {
+    color: var(--azul);
+    font-weight: 700;
+    border-bottom-color: var(--azul);
+}
+
+
+/* Área de contenido */
+
+.contenido {
+    padding: 25px;
+    max-width: 1650px;
+    margin: 0 auto;
+}
+
+/* Encabezado de cada pantalla */
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2.5px solid var(--azul);
+}
+
+.encabezado h2 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.encabezado p {
+    color: var(--texto-suave);
+    margin-top: 1px;
+    font-size: 15.62px;
+}
+
+.encabezado__fecha {
+    background-color: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 12.5px 20px;
+    text-align: right;
+    box-shadow: var(--sombra);
+}
+
+.encabezado__fecha strong {
+    display: block;
+    font-size: 17.5px;
+}
+
+.encabezado__fecha span {
+    font-size: 15px;
+    color: var(--texto-suave);
+}

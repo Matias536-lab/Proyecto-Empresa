@@ -1,0 +1,1030 @@
+/* componentes.css — las piezas que se repiten en varias pantallas: cajas,
+   tablas, botones, formularios, filtros y etiquetas de estado. */
+
+/* Indicadores */
+
+.kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(262.5px, 1fr));
+    gap: 22.5px;
+    margin-bottom: 30px;
+}
+
+.kpi {
+    background-color: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--sombra);
+}
+
+.kpi__icono {
+    width: 57.5px;
+    height: 57.5px;
+    border-radius: var(--radio-chico);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.kpi__icono--azul  { background-color: var(--azul-claro);  color: var(--azul);  }
+.kpi__icono--verde { background-color: var(--verde-claro); color: var(--verde); }
+.kpi__icono--ambar { background-color: var(--ambar-claro); color: var(--ambar); }
+.kpi__icono--gris  { background-color: var(--fondo);       color: var(--texto-suave); }
+
+.kpi__texto small {
+    display: block;
+    color: var(--texto-suave);
+    font-size: 16.25px;
+    font-weight: 500;
+}
+
+.kpi__texto strong {
+    display: block;
+    font-size: 37.5px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.kpi__texto span {
+    font-size: 15px;
+    color: var(--texto-suave);
+}
+
+
+/* Franja de resumen
+   Los números del día en una sola pieza. Con tarjetas sueltas y un ícono
+   de color cada una entraba la mitad de la información. */
+
+.resumen {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    margin-bottom: 27.5px;
+    overflow: hidden;
+}
+
+.resumen__dato {
+    flex: 1 1 175px;
+    padding: 20px 27.5px;
+    border-right: 1px solid var(--borde);
+}
+
+.resumen__dato:last-child { border-right: none; }
+
+.resumen__dato strong {
+    display: block;
+    font-size: 33.75px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -.8px;
+    font-variant-numeric: tabular-nums;
+}
+
+.resumen__dato small {
+    display: block;
+    font-size: 15.62px;
+    color: var(--texto-suave);
+    font-weight: 500;
+    margin-top: 1px;
+}
+
+/* Ámbar sólo en el dato que pide que alguien haga algo. */
+.resumen__dato--pendiente strong { color: var(--ambar); }
+
+
+/* Paneles */
+
+.panel {
+    background-color: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    margin-bottom: 30px;
+}
+
+.panel__cabecera {
+    padding: 22.5px 27.5px;
+    border-bottom: 1px solid var(--borde);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel__cabecera h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.panel__cuerpo {
+    padding: 27.5px;
+}
+
+.grilla-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+
+/* Tablero
+   Columna ancha para la planilla y una angosta al lado para el resumen.
+   Todo apilado desperdiciaba media pantalla. */
+
+.tablero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 312.5px;
+    gap: 25px;
+    align-items: start;
+}
+
+/* Igual que .panel pero más compacta. El borde es lo único que la separa
+   del fondo, así que va el gris oscuro. */
+.caja {
+    background-color: var(--blanco);
+
+    border: 1px solid var(--borde-caja);
+    border-radius: var(--radio);
+    margin-bottom: 25px;
+}
+
+.caja:last-child { margin-bottom: 0; }
+
+.caja__titulo {
+    padding: 10px 15px;
+    /* Línea de adentro: gris claro, no el de la caja. */
+    border-bottom: 1px solid var(--borde);
+    /* El mismo agua en las cinco pantallas, para que se lean como una. */
+    background-color: var(--agua);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.caja__titulo h3 {
+    font-size: 16.25px;
+    font-weight: 700;
+    color: var(--texto);
+}
+
+.caja__titulo .texto-suave { font-size: 15px; }
+
+
+/* Va en vertical y no en fila porque tiene que entrar en la columna
+   angosta del costado. */
+.cifras { padding: 7.5px 0 12.5px; }
+
+.cifras__fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 15px;
+    padding: 8.75px 20px;
+}
+
+.cifras__fila span { font-size: 16.25px; color: var(--texto-suave); }
+
+.cifras__fila b {
+    font-size: 22.5px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.3px;
+}
+
+.cifras__fila--total {
+    border-top: 1px solid var(--borde);
+    margin-top: 7.5px;
+    padding-top: 15px;
+}
+
+/* La urgencia se marca con peso de letra, no con color. */
+.cifras__fila--alerta b { text-decoration: underline; text-underline-offset: 3.75px; }
+
+
+.solicitud {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--borde);
+}
+
+.solicitud:last-child { border-bottom: none; }
+
+.solicitud strong { display: block; font-size: 16.88px; }
+.solicitud > span  { display: block; font-size: 15px; color: var(--texto-suave); }
+
+.solicitud__pie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12.5px;
+    margin-top: 8.75px;
+    font-size: 15px;
+    color: var(--texto-suave);
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* Tabla densa
+   Filas juntas y separadores, como una planilla de verdad: entran muchas
+   más filas de un vistazo. */
+
+.tabla--densa thead th {
+    padding: 10px 13.75px;
+    border-right: 1px solid var(--borde);
+}
+
+.tabla--densa thead th:last-child { border-right: none; }
+
+.tabla--densa tbody td {
+    padding: 8.75px 13.75px;
+    border-right: 1px solid var(--borde);
+}
+
+.tabla--densa tbody td:last-child { border-right: none; }
+
+
+/* Para cuando una celda lleva dos renglones (nombre arriba, cargo abajo).
+   Va como clase aparte y no tocando .tabla--densa, así Asistencia y
+   Reportes siguen apretadas como tienen que estar. */
+.tabla--aireada tbody td { padding: 12px 15px; }
+
+/* El cargo debajo del nombre, el rol debajo del usuario: apilado en vez
+   de en una columna aparte. */
+.dato-sub {
+    display: block;
+    font-size: 14px;
+    color: var(--texto-suave);
+    margin-top: 2px;
+}
+
+/* "Sin usuario", "Dado de baja": en bastardilla para que no se confunda
+   con un dato real. */
+.dato-vacio {
+    color: var(--texto-suave);
+    font-style: italic;
+}
+
+/* Se ve que está, pero no compite con los que siguen trabajando. */
+.fila-baja td { background-color: #f7f8fa; }
+.fila-baja strong { color: var(--texto-suave); }
+
+/* Cierre de planilla, en el <tfoot>: cada total justo abajo de su columna.
+   El borde grueso es lo que se ve en papel aunque no salgan los fondos. */
+.fila-total td {
+    background-color: var(--agua);
+    font-weight: 700;
+    font-size: 17px;
+    border-top: 2px solid var(--borde-caja);
+    padding: 12px 15px !important;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* La misma pieza en el Panel y en el Reporte mensual, a propósito. Se
+   llama "cifras-mes" porque salió del reporte y después la reusamos. */
+.cifras-mes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.cifra-mes {
+    background-color: var(--blanco);
+    border: 1px solid var(--borde-caja);
+    border-radius: var(--radio);
+    padding: 18px 22px;
+}
+
+.cifra-mes b {
+    display: block;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--azul);
+    font-variant-numeric: tabular-nums;
+}
+
+.cifra-mes span {
+    display: block;
+    font-size: 15px;
+    color: var(--texto-suave);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+/* "Todavía sin fichar" no es actividad del día: va en gris para que no
+   compita con las otras tres. */
+.cifra-mes--apagada b { color: var(--texto-suave); }
+
+
+/* Renglón que abre un grupo en una planilla. Va con el agua de las
+   cabeceras para que se lea como título y no como una fila de datos.
+   Dos nombres para lo mismo: .dia-cab quedó de Asistencia y no lo
+   cambiamos para no tocar una pantalla que ya andaba. */
+.dia-cab td,
+.fila-grupo td {
+    background-color: var(--agua) !important;
+    border-bottom: 1px solid var(--borde);
+    padding: 11px 15px !important;
+}
+
+.dia-cab b,
+.fila-grupo b { font-size: 17px; }
+
+.dia-cab span,
+.fila-grupo span {
+    float: right;
+    font-size: 15px;
+    color: var(--texto-suave);
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* Paso de páginas al pie de una planilla larga. */
+.paginas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 13px 16px;
+    border-top: 1px solid var(--borde);
+    flex-wrap: wrap;
+}
+
+.paginas__texto { font-size: 16px; color: var(--texto-suave); }
+.paginas__texto b { color: var(--texto); }
+
+.paginas__botones { display: flex; gap: 8px; }
+
+/* Se apaga, no desaparece: si desaparece, el otro botón se corre de lugar
+   y hay que buscarlo en cada página. */
+.paginas__apagado {
+    opacity: .4;
+    cursor: default;
+}
+
+
+/* El usuario se tipea exacto, y en monoespaciada no se confunden la l, la
+   I y el 1. */
+.tabla code {
+    font-size: 15px;
+    font-family: Consolas, "Courier New", monospace;
+}
+
+/* Una fila por empleado, sin cortar nombres en dos renglones. */
+.tabla--densa td.nowrap, .tabla--densa th { white-space: nowrap; }
+
+.tabla--densa tbody tr:nth-child(even) { background-color: var(--fondo-fila); }
+.tabla--densa tbody tr:hover           { background-color: #fff8dc; }
+
+@media (max-width: 1150px) {
+    .tablero { grid-template-columns: 1fr; }
+}
+
+
+/* Botones */
+
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13.75px 22.5px;
+    border: 1px solid transparent;
+    border-radius: var(--radio-chico);
+    font-family: inherit;
+    font-size: 17.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color .15s, border-color .15s;
+    white-space: nowrap;
+}
+
+.boton--primario {
+    background-color: var(--azul);
+    color: var(--blanco);
+}
+
+.boton--primario:hover { background-color: var(--azul-oscuro); }
+
+.boton:disabled {
+    opacity: .65;
+    cursor: not-allowed;
+}
+
+.boton--secundario {
+    background-color: var(--blanco);
+    border-color: var(--borde);
+    color: var(--texto);
+}
+
+.boton--secundario:hover { background-color: var(--fondo); }
+
+.boton--verde { background-color: var(--verde); color: var(--blanco); }
+.boton--verde:hover { background-color: #15803d; }
+
+.boton--rojo { background-color: var(--blanco); border-color: var(--rojo); color: var(--rojo); }
+.boton--rojo:hover { background-color: var(--rojo-claro); }
+
+.boton--grande {
+    padding: 20px 30px;
+    font-size: 20px;
+    width: 100%;
+}
+
+.boton--chico { padding: 8.75px 15px; font-size: 16.25px; }
+
+
+/* Formularios */
+
+.campo {
+    margin-bottom: 22.5px;
+}
+
+.campo label {
+    display: block;
+    font-weight: 600;
+    font-size: 16.25px;
+    margin-bottom: 7.5px;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 13.75px 17.5px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-chico);
+    font-family: inherit;
+    font-size: 17.5px;
+    color: var(--texto);
+    background-color: var(--blanco);
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3.75px rgba(37, 99, 235, .12);
+}
+
+.campo small {
+    display: block;
+    color: var(--texto-suave);
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.campo__con-icono {
+    position: relative;
+}
+
+.campo__icono {
+    position: absolute;
+    left: 17.5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--texto-suave);
+    pointer-events: none;
+}
+
+.campo__con-icono input {
+    padding-left: 52.5px;
+}
+
+/* El ojito para ver la contraseña */
+.campo__ojo {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--texto-suave);
+    padding: 7.5px;
+    border-radius: 7.5px;
+    display: flex;
+}
+
+.campo__ojo:hover { color: var(--azul); background-color: var(--azul-claro); }
+
+.campo input.error,
+.campo select.error {
+    border-color: var(--rojo);
+    background-color: #fff5f5;
+}
+
+.campo input.error:focus {
+    box-shadow: 0 0 0 3.75px rgba(220, 38, 38, .12);
+}
+
+/* Qué formatos entran y cuánto pueden pesar, avisado antes y no después
+   de que la persona se equivoque. */
+.campo__ayuda {
+    display: block;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--texto-suave);
+    margin-top: 6px;
+}
+
+.campo__ayuda strong { color: var(--texto); }
+
+/* A ancho completo: el nombre del archivo elegido puede ser largo y en
+   media columna se cortaba. */
+.campo--ancho { grid-column: 1 / -1; }
+
+.campo--ancho input[type="file"] {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    font-family: inherit;
+    font-size: 16px;
+    background-color: var(--blanco);
+}
+
+.campo--ancho input[type="file"].error { border-color: var(--rojo); }
+
+.pedido__adjunto {
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+.pedido__adjunto a {
+    color: var(--azul);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+}
+
+.pedido__adjunto span {
+    color: var(--texto-suave);
+    font-size: 14.5px;
+    margin-left: 8px;
+}
+
+.campo__error {
+    display: block;
+    color: var(--rojo);
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 6.25px;
+    min-height: 20px;
+}
+
+
+/* Carteles de aviso */
+
+.alerta {
+    display: flex;
+    align-items: center;
+    gap: 12.5px;
+    padding: 15px 18.75px;
+    border-radius: var(--radio-chico);
+    font-size: 16.25px;
+    font-weight: 500;
+    margin-bottom: 22.5px;
+}
+
+.alerta svg { flex-shrink: 0; }
+
+.alerta--error { background-color: var(--rojo-claro);  color: #b91c1c; }
+.alerta--ok    { background-color: var(--verde-claro); color: #15803d; }
+.alerta--aviso { background-color: var(--ambar-claro); color: #b45309; }
+
+.formulario-grilla {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 25px;
+}
+
+.formulario-grilla .ancho-total { grid-column: 1 / -1; }
+
+.formulario__acciones {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    border-top: 1px solid var(--borde);
+    padding-top: 25px;
+    margin-top: 10px;
+}
+
+
+/* Barra de filtros */
+
+.filtros {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    padding: 25px 27.5px;
+    border-bottom: 1px solid var(--borde);
+    flex-wrap: wrap;
+}
+
+.filtros__buscador {
+    flex-grow: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.filtros__buscador svg {
+    position: absolute;
+    left: 16.25px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--texto-suave);
+    pointer-events: none;
+}
+
+.filtros__buscador input {
+    width: 100%;
+    padding: 13.75px 17.5px 13.75px 50px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-chico);
+    font-family: inherit;
+    font-size: 17.5px;
+}
+
+.filtros__buscador input:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3.75px rgba(37, 99, 235, .12);
+}
+
+.filtros__grupo label {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--texto-suave);
+    margin-bottom: 6.25px;
+}
+
+.filtros__grupo select {
+    padding: 12.5px 17.5px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-chico);
+    font-family: inherit;
+    font-size: 17.5px;
+    background-color: var(--blanco);
+    min-width: 187.5px;
+}
+
+
+/* Tablas */
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla thead th {
+    text-align: left;
+    padding: 10px 15px;
+    font-size: 15.62px;
+    font-weight: 700;
+    color: var(--texto);
+    background-color: #dfe3e8;
+    border-bottom: 1px solid var(--borde);
+    white-space: nowrap;
+}
+
+.tabla tbody td {
+    padding: 8.75px 15px;
+    border-bottom: 1px solid var(--borde);
+    vertical-align: middle;
+}
+
+.tabla tbody tr:last-child td { border-bottom: none; }
+
+.tabla tbody tr:hover { background-color: var(--fondo); }
+
+.tabla .num { font-variant-numeric: tabular-nums; }
+
+.persona {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 47.5px;
+    height: 47.5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16.25px;
+    color: var(--blanco);
+    flex-shrink: 0;
+    letter-spacing: .3px;
+}
+
+/* Los colores se eligen a mano desde el HTML, no los calcula nada. */
+.avatar--1 { background-color: #2563eb; }
+.avatar--2 { background-color: #0891b2; }
+.avatar--3 { background-color: #7c3aed; }
+.avatar--4 { background-color: #db2777; }
+.avatar--5 { background-color: #ea580c; }
+.avatar--6 { background-color: #0d9488; }
+.avatar--7 { background-color: #64748b; }
+
+.avatar--chico { width: 40px; height: 40px; font-size: 15px; }
+
+.persona__datos strong { display: block; font-weight: 600; }
+.persona__datos span  { display: block; font-size: 15px; color: var(--texto-suave); }
+
+.acciones {
+    display: flex;
+    gap: 7.5px;
+}
+
+.acciones a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7.5px;
+    color: var(--texto-suave);
+    border: 1px solid var(--borde);
+    background-color: var(--blanco);
+}
+
+.acciones a:hover { background-color: var(--azul-claro); color: var(--azul); border-color: var(--azul); }
+
+
+/* Etiquetas de estado */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7.5px;
+    padding: 3.75px 11.25px;
+    border-radius: 3.75px;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* El puntito de color */
+.badge::before {
+    content: '';
+    width: 8.75px;
+    height: 8.75px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+.badge--verde { background-color: var(--verde-claro); color: #15803d; }
+.badge--ambar { background-color: var(--ambar-claro); color: #b45309; }
+.badge--rojo  { background-color: var(--rojo-claro);  color: #b91c1c; }
+.badge--gris  { background-color: #f1f5f9;            color: var(--texto-suave); }
+.badge--azul  { background-color: var(--azul-claro);  color: var(--azul); }
+
+
+/* Estados sin color
+   Se distinguen por relleno, borde y bastardilla, no por color: la
+   planilla se imprime en blanco y negro y se sigue entendiendo, y quien
+   no distingue colores la lee igual. */
+
+.estado {
+    display: inline-block;
+    padding: 2.5px 11.25px;
+    border: 1px solid var(--texto-suave);
+    border-radius: 3.75px;
+    font-size: 14.38px;
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1.5;
+}
+
+/* Trabajando ahora. Relleno sólido, es lo primero que hay que ver. */
+.estado--activo {
+    background-color: var(--texto);
+    border-color: var(--texto);
+    color: var(--blanco);
+}
+
+.estado--cerrado {
+    background-color: var(--blanco);
+    border-color: var(--texto);
+    color: var(--texto);
+}
+
+/* De licencia. La línea cortada ya da la idea de ausencia. */
+.estado--licencia {
+    background-color: var(--blanco);
+    border-style: dashed;
+    color: var(--texto);
+}
+
+/* Sin fichar: ni caja ni negrita. Que no haya nada es el dato. */
+.estado--ninguno {
+    border-color: transparent;
+    background: none;
+    color: var(--texto-suave);
+    font-weight: 400;
+    font-style: italic;
+    padding-left: 0;
+}
+
+
+/* Fila inferior: la planilla se queda con todo el ancho de arriba y acá
+   abajo van el resumen y las solicitudes. */
+
+.fila-inferior {
+    display: grid;
+    grid-template-columns: 387.5px minmax(0, 1fr);
+    gap: 22.5px;
+    align-items: start;
+    margin-top: 22.5px;
+}
+
+@media (max-width: 1000px) {
+    .fila-inferior { grid-template-columns: 1fr; }
+}
+
+
+/* Pie de tabla y paginación */
+
+.pie-tabla {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 27.5px;
+    border-top: 1px solid var(--borde);
+    color: var(--texto-suave);
+    font-size: 16.25px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.paginacion {
+    display: flex;
+    gap: 7.5px;
+}
+
+.paginacion a {
+    min-width: 42.5px;
+    height: 42.5px;
+    padding: 0 12.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--borde);
+    border-radius: 7.5px;
+    background-color: var(--blanco);
+    color: var(--texto);
+    font-weight: 500;
+}
+
+.paginacion a:hover { background-color: var(--fondo); }
+
+.paginacion a.activa {
+    background-color: var(--azul);
+    border-color: var(--azul);
+    color: var(--blanco);
+}
+
+.paginacion a.desactivada {
+    color: #cbd5e1;
+    pointer-events: none;
+}
+
+
+/* Gráfico de barras, hecho a mano y sin librerías */
+
+.grafico {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grafico__fila {
+    display: grid;
+    grid-template-columns: 150px 1fr 75px;
+    align-items: center;
+    gap: 17.5px;
+}
+
+.grafico__etiqueta {
+    font-size: 16.25px;
+    font-weight: 500;
+    color: var(--texto-suave);
+    text-align: right;
+}
+
+.grafico__pista {
+    background-color: var(--fondo);
+    border-radius: 1248.75px;
+    height: 32.5px;
+    overflow: hidden;
+}
+
+.grafico__barra {
+    height: 100%;
+    background-color: var(--azul);
+    border-radius: 1248.75px;
+}
+
+.grafico__valor {
+    font-weight: 700;
+    font-size: 17.5px;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* Accesos rápidos y últimos movimientos */
+
+.accesos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17.5px;
+}
+
+.acceso {
+    display: flex;
+    align-items: center;
+    gap: 17.5px;
+    padding: 20px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background-color: var(--blanco);
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.acceso:hover {
+    border-color: var(--azul);
+    box-shadow: var(--sombra-media);
+}
+
+.acceso__icono {
+    width: 52.5px;
+    height: 52.5px;
+    border-radius: var(--radio-chico);
+    background-color: var(--azul-claro);
+    color: var(--azul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.acceso strong { display: block; font-size: 17.5px; }
+.acceso span   { display: block; font-size: 15px; color: var(--texto-suave); }
+
+.actividad {
+    display: flex;
+    flex-direction: column;
+}
+
+.actividad__item {
+    display: flex;
+    align-items: center;
+    gap: 17.5px;
+    padding: 17.5px 0;
+    border-bottom: 1px solid var(--borde);
+}
+
+.actividad__item:last-child { border-bottom: none; padding-bottom: 0; }
+.actividad__item:first-child { padding-top: 0; }
+
+.actividad__texto { flex-grow: 1; }
+.actividad__texto strong { display: block; font-size: 17.5px; }
+.actividad__texto span   { display: block; font-size: 16.25px; color: var(--texto-suave); }
+
+.actividad__hora {
+    font-size: 15px;
+    color: var(--texto-suave);
+    white-space: nowrap;
+}
+
+
+/* El logo
+   Es azul con verde y va sobre fondos azules, así que se perdía. El disco
+   blanco de atrás lo resuelve. El padding va chico porque el logo ya trae
+   su propio anillo y el blanco sólo tiene que asomar. */
+
+.logo {
+    display: block;
+    flex-shrink: 0;
+    background-color: var(--blanco);
+    border-radius: 50%;
+    padding: 2.5px;
+    object-fit: contain;
+}

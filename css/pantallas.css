@@ -1,0 +1,459 @@
+/* pantallas.css — lo que es de una pantalla sola y no se repite. */
+
+/* Login */
+
+.login {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Columna izquierda. Color plano: probamos con degradado y quedaba feo. */
+.login__presentacion {
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.login__marca {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.login__marca h1 { font-size: 37.5px; font-weight: 700; letter-spacing: -.6px; }
+.login__marca span { font-size: 16.25px; opacity: .85; }
+
+/* El margen automático lo centra en lo que sobra debajo del logo. */
+.login__mensaje { max-width: 575px; margin: auto 0; }
+
+.login__mensaje h2 {
+    font-size: 45px;
+    line-height: 1.18;
+    letter-spacing: -1px;
+    margin-bottom: 17.5px;
+}
+
+/* Renglones con una línea fina, la misma forma que las planillas del
+   resto del sistema. */
+.login__modulos {
+    margin-top: 42.5px;
+    border-top: 1px solid rgba(255, 255, 255, .22);
+}
+
+.login__modulo {
+    display: flex;
+    align-items: baseline;
+    gap: 22.5px;
+    padding: 16.25px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .22);
+}
+
+.login__modulo dt {
+    flex: 0 0 120px;
+    font-size: 16.25px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.login__modulo dd {
+    margin: 0;
+    font-size: 18.12px;
+    opacity: .78;
+}
+
+.login__formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background-color: var(--blanco);
+}
+
+.login__caja { width: 100%; max-width: 475px; }
+
+.login__caja h2 {
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: -.6px;
+}
+
+.login__caja > p {
+    color: var(--texto-suave);
+    margin-bottom: 35px;
+    margin-top: 5px;
+}
+
+.login__nota {
+    text-align: center;
+    font-size: 16.25px;
+    color: var(--texto-suave);
+    margin-top: 25px;
+}
+
+
+
+/* Panel de la jornada
+   El número grande es el tiempo trabajado y no la hora: la hora ya está en
+   el reloj de Windows, y acá lo que se viene a ver es cuánto se lleva. */
+
+.jornada {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background-color: var(--blanco);
+    border: 1px solid var(--borde-caja);
+    border-radius: var(--radio);
+    padding: 24px 28px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+}
+
+.jornada__quien {
+    font-size: 16px;
+    color: var(--texto-suave);
+    margin-bottom: 10px;
+}
+
+/* Va con tabular-nums porque el número cambia cada segundo: sin eso
+   tiembla a lo ancho. */
+.jornada__cifra {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--texto);
+}
+
+/* Antes de fichar el número es la hora, y en gris no se confunde con
+   horas trabajadas. */
+.jornada__cifra--apagada { color: var(--texto-suave); }
+
+/* El rótulo cambia con el estado ("Hora del servidor", "Trabajando desde
+   las 08:30"). Un número solo no dice nada. */
+.jornada__que {
+    display: block;
+    font-size: 15px;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-top: 7px;
+}
+
+.jornada__detalle {
+    margin-top: 12px;
+    font-size: 17px;
+    color: var(--texto-suave);
+}
+
+.jornada__detalle b {
+    color: var(--texto);
+    font-variant-numeric: tabular-nums;
+}
+
+.jornada__boton {
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: 1px solid var(--azul);
+    padding: 16.25px 32.5px;
+    border-radius: var(--radio);
+    font-family: inherit;
+    font-size: 18.75px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.jornada__boton:hover { background-color: var(--azul-oscuro); }
+
+/* Salida en blanco, distinto de entrada, para que no se apriete de
+   puro reflejo. */
+.jornada__boton--salida {
+    background-color: var(--blanco);
+    color: var(--azul);
+}
+
+.jornada__boton--salida:hover { background-color: var(--azul-claro); }
+
+
+/* Formulario dentro de una fila, para cerrar a mano una jornada que
+   quedó abierta */
+
+.form-linea {
+    display: flex;
+    align-items: center;
+    gap: 7.5px;
+}
+
+.form-linea input[type="time"],
+.form-linea input[type="text"] {
+    padding: 5px 8.75px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    font-family: inherit;
+    font-size: 15.62px;
+}
+
+.form-linea input[type="time"] { width: 131.25px; }
+.form-linea input[type="text"] { width: 100%; min-width: 162.5px; }
+
+.form-linea input:focus {
+    outline: none;
+    border-color: var(--azul);
+}
+
+.resolver {
+    display: flex;
+    flex-direction: column;
+    gap: 7.5px;
+    min-width: 287.5px;
+}
+
+.resolver__botones { display: flex; gap: 7.5px; }
+
+.totales {
+    display: flex;
+    gap: 32.5px;
+    flex-wrap: wrap;
+    padding: 12.5px 15px;
+    border-top: 1px solid var(--borde);
+    background-color: var(--fondo-fila);
+    font-size: 16.25px;
+}
+
+.totales span { color: var(--texto-suave); }
+.totales b { font-variant-numeric: tabular-nums; }
+
+
+/* El Panel
+   Cuatro cajas, una por estado. Como cada grupo tiene distinta cantidad de
+   gente, los bordes de abajo quedaban en escalera: ahora las cuatro miden
+   lo mismo y en las vacías el mensaje va centrado, así el blanco se lee
+   como "acá no hay nadie" y no como que faltó cargar algo. */
+
+.grupos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    /* Las cuatro con la misma altura: manda la más alta. */
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+.grupo {
+    background-color: var(--blanco);
+    border: 1px solid var(--borde-caja);
+    border-radius: var(--radio);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Misma forma que las tarjetas del reporte mensual: el número grande
+   arriba y abajo qué es. */
+.grupo__cab {
+    padding: 18px 20px 14px;
+    background-color: var(--agua);
+    border-bottom: 1px solid var(--borde);
+}
+
+.grupo__n {
+    display: block;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--azul);
+    /* tabular-nums para que los cuatro números queden alineados. */
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 8px;
+}
+
+.grupo__cab h3 { font-size: 17px; font-weight: 700; margin: 0; }
+
+.grupo__cab p {
+    font-size: 13.5px;
+    line-height: 1.35;
+    color: var(--texto-suave);
+    margin: 2px 0 0;
+}
+
+/* Con cuatro columnas la caja queda angosta, así que el área y la hora
+   van debajo del nombre: al costado se cortaban. */
+.grupo__lista {
+    list-style: none;
+    margin: 0;
+    padding: 4px 20px 14px;
+    /* Se come el alto que sobra: es lo que iguala las cuatro cajas. */
+    flex: 1;
+}
+
+.grupo__lista li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--fondo-fila);
+    font-size: 16px;
+}
+
+.grupo__lista li:last-child { border-bottom: none; }
+
+.grupo__lista b { display: block; font-weight: 600; }
+
+.grupo__lista span {
+    display: block;
+    font-size: 14px;
+    color: var(--texto-suave);
+    margin-top: 2px;
+}
+
+/* En bastardilla para que no se lea como el nombre de un empleado. */
+.grupo__lista--vacia {
+    color: var(--texto-suave);
+    font-style: italic;
+    font-size: 15px;
+    /* Centrado y no pegado arriba: arriba parecía que abajo faltaba algo. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grupo__lista--vacia li { border-bottom: none; }
+
+/* "Todavía sin fichar" no es actividad del día: el número se apaga. */
+.grupo--apagado .grupo__n { color: var(--texto-suave); }
+
+.resumen-hoy {
+    font-size: 16px;
+    color: var(--texto-suave);
+    margin-bottom: 20px;
+    padding-left: 2px;
+}
+
+.resumen-hoy b {
+    color: var(--texto);
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* Solicitudes por resolver
+   No es una tabla a propósito: acá no se comparan filas, se lee una
+   solicitud y se decide, y el motivo que escribió la persona necesita
+   ancho. A la izquierda qué pide, a la derecha con qué se resuelve. */
+
+.pedidos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pedido {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--borde);
+    /* En pantalla angosta la parte de resolver cae abajo y no se aplasta. */
+    flex-wrap: wrap;
+}
+
+.pedido:last-child { border-bottom: none; }
+
+.pedido__quien b {
+    display: block;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.pedido__quien span {
+    font-size: 15px;
+    color: var(--texto-suave);
+}
+
+.pedido__que {
+    margin-top: 9px;
+    font-size: 17px;
+}
+
+.pedido__que b { font-variant-numeric: tabular-nums; }
+
+/* En bastardilla: son palabras del empleado, no un dato del sistema. */
+.pedido__motivo {
+    margin-top: 6px;
+    font-size: 16px;
+    color: var(--texto-suave);
+    font-style: italic;
+}
+
+.pedido__espera {
+    margin-top: 6px;
+    font-size: 15px;
+    color: var(--texto-suave);
+}
+
+.pedido__espera strong { color: var(--texto); }
+
+/* El min-width es para que el campo del comentario no se achique hasta
+   no poder escribir nada. */
+.pedido__resolver {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    min-width: 330px;
+}
+
+.pedido__resolver input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.pedido__resolver input:focus {
+    outline: none;
+    border-color: var(--azul);
+}
+
+.pedido__botones { display: flex; gap: 9px; }
+.pedido__botones .boton { flex: 1; }
+
+
+/* Utilidades */
+
+.oculto        { display: none !important; }
+.texto-suave   { color: var(--texto-suave); }
+.texto-derecha { text-align: right; }
+.sin-margen    { margin-bottom: 0; }
+
+.vacio {
+    padding: 50px 27.5px;
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+/* Cuando no hay resultados mostramos con qué se buscó: un "no se
+   encontró" pelado deja a la persona adivinando qué pasó. */
+.vacio__titulo {
+    font-size: 18px;
+    color: var(--texto);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.vacio__detalle {
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 60ch;
+    margin: 0 auto 10px;
+}
+
+.vacio__detalle strong { color: var(--texto); }
+
+.vacio__detalle a {
+    color: var(--azul);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}

@@ -1,0 +1,86 @@
+/* ASISTENS — base.css
+   Colores y medidas de todo el sistema. Para cambiar la paleta se toca acá.
+
+   Partimos el CSS en cinco archivos para no tener uno de mil y pico de
+   líneas. Se cargan desde includes/cabecera.php así: base, navegacion,
+   componentes, pantallas, adaptable. El último corrige a los otros. */
+
+/* Variables */
+
+:root {
+    /* Colores principales */
+    --azul:            #1e4d8b;   /* El institucional, no un azul de app */
+    --azul-oscuro:     #163a68;
+    --azul-claro:      #e8eef6;
+
+    --verde:         #16a34a;
+    --verde-claro:     #dcfce7;
+    --ambar:           #d97706;
+    --ambar-claro:     #fef3c7;
+    --rojo:            #dc2626;
+    --rojo-claro:      #fee2e2;
+
+    --texto:         #0f172a;
+    --texto-suave:     #64748b;
+    --borde:           #c8cdd4;   /* Líneas de adentro, tipo planilla */
+
+    /* Más oscuro que --borde a propósito: con el clarito la caja blanca
+       sobre el fondo casi blanco no se veía. */
+    --borde-caja:      #8c97a8;
+
+    /* Franja del título de las cajas. Probamos un agua más fuerte y se
+       peleaba con la barra azul de arriba. */
+    --agua:            #e3f0f4;
+
+    --fondo:           #eceef1;
+    --blanco:          #ffffff;
+
+    /* Medidas */
+    --ancho-sidebar:   325px;
+    --radio:           3.75px;
+    --radio-chico:     3.75px;
+    --alto-cabecera:   65px;
+    /* Sin sombras: acá los bloques se separan con bordes, no flotando. */
+    --sombra:          none;
+    --sombra-media:    0 2.5px 7.5px rgba(15, 23, 42, .08);
+    --fondo-fila:      #f5f6f8;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* La tipografía que ya trae Windows, no Google Fonts: así abre igual
+       si el día de la presentación no hay internet. */
+    font-family: 'Segoe UI', Tahoma, Verdana, Arial, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-size: 16.88px;
+    line-height: 1.45;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+/* Estructura */
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}

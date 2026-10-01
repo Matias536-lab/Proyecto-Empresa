@@ -1,0 +1,35 @@
+# =====================================================================
+# ASISTENS — Carpeta de archivos subidos por los empleados
+# ---------------------------------------------------------------------
+# NADIE puede abrir un archivo de acá escribiendo la dirección en el
+# navegador. Todo pasa por descargar.php, que antes de mostrar nada
+# comprueba quién está pidiendo el archivo.
+#
+# Esto es lo que evita que un empleado vea el certificado médico de un
+# compañero simplemente probando direcciones.
+# =====================================================================
+
+# --- 1. Bloquear el acceso directo ---
+# Apache 2.4 usa "Require"; las versiones viejas usan "Deny". Se ponen
+# las dos formas para que funcione en cualquiera.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>
+
+# --- 2. Apagar PHP acá adentro ---
+# Si alguien lograra colar un archivo .php disfrazado, acá no se
+# ejecutaría: sería un archivo de texto más. Es la segunda barrera,
+# por si la primera falla.
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+
+# --- 3. No listar el contenido de la carpeta ---
+Options -Indexes
